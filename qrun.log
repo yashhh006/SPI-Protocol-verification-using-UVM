@@ -1,0 +1,223 @@
+QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
+Start time: 00:36:41 on Aug 21,2025
+qrun -batch -access=rw+/. -uvmhome uvm-1.2 -cover sbt -timescale 1ns/1ns -mfcu -mfcu design.sv testbench.sv -voptargs="+acc=npr" -sv_seed 54321 -coverage -do " run -all; exit" 
+Creating library 'qrun.out/work'.
+Mapping library 'mtiUvm' to 'qrun.out/work'.
+QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
+Start time: 00:36:41 on Aug 21,2025
+vlog -cover sbt -timescale 1ns/1ns -mfcu -mfcu -ccflags "-Wno-missing-declarations" -ccflags "-Wno-maybe-uninitialized" -ccflags "-Wno-return-type" -ccflags "-DQUESTA" /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc /usr/share/questa/questasim/verilog_src/uvm-1.2/src/uvm_pkg.sv /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv design.sv testbench.sv -work qrun.out/work "+incdir+/usr/share/questa/questasim/verilog_src/uvm-1.2/src" -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
+-- Compiling package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling package questa_uvm_pkg
+-- Importing package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling module spi_cntrl
+** Warning: ** while parsing file included at testbench.sv(1)
+** while parsing file included at top.sv(15)
+** at spi_cov.sv(18): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+-- Compiling package uvm_pkg_sv_unit
+-- Importing package uvm_pkg (uvm-1.2 Built-in)
+** Warning: spi_cov.sv(18): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+-- Compiling interface apb_intf
+-- Compiling interface spi_intf
+-- Compiling module top
+
+Top level modules:
+	top
+-- Compiling DPI/PLI C++ file /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc
+
+In file included from /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl.c:27,
+                 from /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc:37:
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c: In function 'int uvm_is_vhdl_path(char*)':
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c:90:12: warning: 'char* strncpy(char*, const char*, size_t)' specified bound depends on the length of the source argument [-Wstringop-overflow=]
+   90 |     strncpy(path_copy, path, path_len);
+      |     ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_hdl_questa.c:72:20: note: length computed here
+   72 |   path_len = strlen(path);
+      |              ~~~~~~^~~~~~
+
+End time: 00:36:44 on Aug 21,2025, Elapsed time: 0:00:03
+Errors: 0, Warnings: 2
+QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 00:36:44 on Aug 21,2025
+vopt -access=rw+/. -cover sbt -timescale 1ns/1ns -mfcu -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
+
+Top level modules:
+	top
+
+Analyzing design...
+-- Loading module top
+-- Loading package questa_uvm_pkg
+-- Loading interface apb_intf
+-- Loading interface spi_intf
+-- Loading module spi_cntrl
+** Warning: (vopt-13408) Code coverage will be disabled for some DUs/packages/classes and source files.
+Optimizing 9 design-units (inlining 0/4 module instances):
+-- Optimizing package uvm_pkg (uvm-1.2 Built-in)(fast)
+-- Optimizing package questa_uvm_pkg(fast)
+-- Optimizing package uvm_pkg_sv_unit(fast)
+** Warning: spi_sbd.sv(22): (vopt-2250) Function "write_apb" has no return value assignment.
+-- Optimizing module spi_cntrl(fast)
+-- Optimizing interface apb_intf(fast__2)
+-- Optimizing module top(fast)
+-- Optimizing interface spi_intf(fast__2)
+-- Optimizing interface spi_intf(fast)
+-- Optimizing interface apb_intf(fast)
+Optimized design name is qrun_opt
+End time: 00:36:50 on Aug 21,2025, Elapsed time: 0:00:06
+Errors: 0, Warnings: 3
+# vsim -batch -cover -sv_seed 54321 -lib qrun.out/work -do "coverage save -onexit cov_$Sv_Seed.ucdb" -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 00:36:50 on Aug 21,2025
+# Loading /tmp/unknown@bcfae336ba7e_dpi_52/linux_x86_64_gcc-10.3.0/export_tramp.so
+# //  Questa Sim-64
+# //  Version 2024.3_1 linux_x86_64 Oct 17 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.apb_intf(fast)
+# Loading work.spi_intf(fast)
+# Loading work.uvm_pkg(fast)
+# Loading work.uvm_pkg_sv_unit(fast)
+# Loading work.questa_uvm_pkg(fast)
+# Loading work.top(fast)
+# Loading work.apb_intf(fast__2)
+# Loading work.spi_intf(fast__2)
+# Loading work.spi_cntrl(fast)
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit File: spi_sbd.sv Line: 19
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit File: spi_mon2.sv Line: 14
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit File: spi_mon.sv Line: 14
+# ** Warning: (vsim-8441) Clocking block output vif.cb_drv.pwrite is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit::spi_drv File: spi_drv.sv Line: 21
+# ** Warning: (vsim-8441) Clocking block output vif.cb_drv.pwdata is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit::spi_drv File: spi_drv.sv Line: 24
+# ** Warning: (vsim-3764) Stand-alone call to function 'get' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit::spi_drv File: spi_drv.sv Line: 8
+# ** Warning: (vsim-3764) Stand-alone call to function 'write_apb' treated as implicit void cast.
+#    Time: 0 ns  Iteration: 0  Region: /uvm_pkg_sv_unit::uvm_analysis_imp_apb #(uvm_pkg_sv_unit::apb_tx, uvm_pkg_sv_unit::spi_sbd) File: spi_sbd.sv Line: 1
+# Compiling /tmp/unknown@bcfae336ba7e_dpi_52/linux_x86_64_gcc-10.3.0/exportwrapper.c
+# Loading /tmp/unknown@bcfae336ba7e_dpi_52/linux_x86_64_gcc-10.3.0/vsim_auto_compile.so
+# 
+# coverage save -onexit cov_$Sv_Seed.ucdb
+# run -all
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# ----------------------------------------------------------------
+# UVM-1.2
+# (C) 2007-2014 Mentor Graphics Corporation
+# (C) 2007-2014 Cadence Design Systems, Inc.
+# (C) 2006-2014 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# (C) 2013-2014 NVIDIA Corporation
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test spi_test_lib...
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(579) @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               spi_test_lib            -     @357 
+#   env                      spi_env                 -     @377 
+#     agt                    spi_agent               -     @412 
+#       cov                  spi_cov                 -     @595 
+#         analysis_imp       uvm_analysis_imp        -     @603 
+#       drv                  spi_drv                 -     @552 
+#         rsp_port           uvm_analysis_port       -     @569 
+#         seq_item_port      uvm_seq_item_pull_port  -     @560 
+#       mon                  spi_mon                 -     @578 
+#         ap_port            uvm_analysis_port       -     @586 
+#       sqr                  uvm_sequencer           -     @429 
+#         rsp_export         uvm_analysis_export     -     @437 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @543 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     agt2                   spi_agent2              -     @420 
+#       cov2                 spi_cov2                -     @637 
+#         analysis_imp       uvm_analysis_imp        -     @645 
+#       mon2                 spi_mon2                -     @620 
+#         ap_port2           uvm_analysis_port       -     @628 
+#     sbd                    spi_sbd                 -     @385 
+#       sbd_imp              uvm_analysis_imp_apb    -     @393 
+#       sbd_imp2             uvm_analysis_imp_spi    -     @402 
+# --------------------------------------------------------------
+# 
+# UVM_INFO /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(339) @ 0: reporter [Questa UVM] End Of Elaboration
+# UVM_ERROR @ 275: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 305: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 335: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 365: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 395: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 425: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 455: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 485: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_ERROR @ 515: uvm_test_top.env.agt.sqr@@seq [uvm_test_top.env.agt.sqr.seq] Response queue overflow, response was dropped
+# UVM_INFO spi_mon2.sv(62) @ 1618: uvm_test_top.env.agt2.mon2 [SPI_MON] Before tx.print()
+# UVM_INFO spi_sbd.sv(34) @ 1618: uvm_test_top.env.sbd [SBD] Mem at SBD='{0:128, 1:129, 2:130, 3:131, 4:132, 5:133, 6:134, 7:135, 10:154, 11:155, 12:156, 13:157, 14:158, 15:159, 16:160, 17:161, 18:15 }
+# UVM_INFO spi_sbd.sv(35) @ 1618: uvm_test_top.env.sbd [SBD] TempX at SBD='{128, 129, 130, 131, 132, 133, 134, 135, 154, 155, 156, 157, 158, 159, 160, 161}
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_objection.svh(1246) @ 1715: reporter [TEST_DONE] All end-of-test objections have been dropped. Calling stop tasks
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_objection.svh(1270) @ 1715: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO spi_cov.sv(36) @ 1715: uvm_test_top.env.agt.cov [uvm_test_top.env.agt.cov] PADDR Coverage is 50.00 %
+# UVM_INFO spi_cov.sv(38) @ 1715: uvm_test_top.env.agt.cov [uvm_test_top.env.agt.cov] PADDR Coverage is 100.00 %
+# UVM_INFO spi_cov.sv(40) @ 1715: uvm_test_top.env.agt.cov [uvm_test_top.env.agt.cov] PWDATA Coverage is 100.00 %
+# UVM_INFO spi_cov.sv(42) @ 1715: uvm_test_top.env.agt.cov [uvm_test_top.env.agt.cov] APB Coverage is 83.33 %
+# UVM_INFO spi_test_lib.sv(33) @ 1715: uvm_test_top [SPI_TEST] TESTCASE PASSED
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_report_server.svh(847) @ 1715: reporter [UVM/REPORT/SERVER] 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   16
+# UVM_WARNING :    0
+# UVM_ERROR :    9
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     3
+# [RNTST]     1
+# [SBD]     2
+# [SPI_MON]     1
+# [SPI_TEST]     1
+# [TEST_DONE]     2
+# [UVM/RELNOTES]     1
+# [UVMTOP]     1
+# [uvm_test_top.env.agt.cov]     4
+# [uvm_test_top.env.agt.sqr.seq]     9
+# 
+# ** Note: $finish    : /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(517)
+#    Time: 1715 ns  Iteration: 67  Instance: /top
+# Saving coverage database on exit...
+# End time: 00:36:53 on Aug 21,2025, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 7
+End time: 00:36:53 on Aug 21,2025, Elapsed time: 0:00:12
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   2
+    vopt: Errors:   0, Warnings:   3
+    vsim: Errors:   0, Warnings:   7
+  Totals: Errors:   0, Warnings:  12
